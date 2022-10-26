@@ -1,0 +1,38 @@
+<div class="container">
+  <h3 class="text-center mt-5 mb-5">Hacker News New Articles</h3>
+  <div class="search-hero">
+    <input type='text' name='search' [(ngModel)]="searchText" placeholder="Search by Title">
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+
+        <th>Title</th>
+        <th>Link</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="
+          let articles of articleList
+            | paginate
+              : {
+                  itemsPerPage: tableSize,
+                  currentPage: page,
+                  totalItems: count
+                } | filter:searchText
+          let i = index
+        ">
+        <td scope="row">{{ articles.title }}</td>
+
+        <td><a href="{{ articles.url }}"> Click Here for Articles</a></td>
+
+      </tr>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-center">
+    <pagination-controls previousLabel="Prev"
+                         nextLabel="Next"
+                         (pageChange)="onTableDataChange($event)">
+    </pagination-controls>
+  </div>
+</div>
