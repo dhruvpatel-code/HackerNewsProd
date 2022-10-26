@@ -1,13 +1,14 @@
 <div class="container">
   <h3 class="text-center mt-5 mb-5">Hacker News New Articles</h3>
-  <div class="search-hero">
-    <input type='text' name='search' [(ngModel)]="searchText" placeholder="Search by Title">
+  <div class="input-group">
+    <div class="form-outline"></div>
+    <input type='text' name='search' class="form-control" [(ngModel)]="searchText" placeholder="Search by Title or Author">
   </div>
   <table class="table">
     <thead>
       <tr>
-
         <th>Title</th>
+        <th>By</th>
         <th>Link</th>
       </tr>
     </thead>
@@ -19,13 +20,13 @@
                   itemsPerPage: tableSize,
                   currentPage: page,
                   totalItems: count
-                } | filter:searchText
+                } | filter:searchText;
           let i = index
         ">
         <td scope="row">{{ articles.title }}</td>
-
-        <td><a href="{{ articles.url }}"> Click Here for Articles</a></td>
-
+        <td>{{articles.by}}</td>
+        <td *ngIf="articles.url != null; else elseBlock"><a href="{{ articles.url }}"> Click Here for Articles</a></td>
+        <ng-template #elseBlock><td>No Link Provided</td></ng-template>
       </tr>
     </tbody>
   </table>

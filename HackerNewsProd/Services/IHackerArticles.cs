@@ -7,6 +7,6 @@ namespace HackerNewsProd.Services
 {
     public interface IHackerArticles
     {
-        Task<List<HackerModel>> GetNewsArticles();
+        Task<List<HackerModel>> GetNewNewsArticles();
     }
 }

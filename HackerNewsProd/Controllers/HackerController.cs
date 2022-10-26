@@ -16,22 +16,24 @@ namespace HackerNewsProd.Controllers
     {
         private readonly IHackerArticles _hackerArticles;
 
+        // Initialize ctor 
         public HackerController(IHackerArticles hackerArticles)
         {
             _hackerArticles = hackerArticles;
         }
 
-        // GET: api/<ArticlesController>
+        // This is the main Get controller. This async get method gets the new articles from HackerServices.
         [HttpGet]
-        public async Task<IActionResult> GetArticles()
+        public async Task<IActionResult> GetNewArticles()
         {
-            List<HackerModel> newsArticleList = new List<HackerModel>();
+            // Holds items from the API in a list to be held from the HackerModel
+            List<HackerModel> newNewsArticleList = new List<HackerModel>();
 
             try
             {
-                newsArticleList = await _hackerArticles.GetNewsArticles();
+                newNewsArticleList = await _hackerArticles.GetNewNewsArticles();
 
-                if (newsArticleList.Count() == 0)
+                if (newNewsArticleList.Count() == 0)
                 {
                     return NotFound();
                 }
@@ -40,8 +42,8 @@ namespace HackerNewsProd.Controllers
             {
                 Console.Write(ex.Message);
             }
-
-            return Ok(newsArticleList);
+            // Gets list of new news articles
+            return Ok(newNewsArticleList);
         }
     }
 }

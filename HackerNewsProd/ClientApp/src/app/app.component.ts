@@ -38,5 +38,4 @@ export class AppComponent implements OnInit {
     this.getArticles();
   }
 
-
 }

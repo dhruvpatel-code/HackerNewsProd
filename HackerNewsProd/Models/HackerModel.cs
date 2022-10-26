@@ -8,7 +8,7 @@
 
         public string url { get; set; }
 
-        public string author { get; set; }
+        public string by { get; set; }
 
     }
 }

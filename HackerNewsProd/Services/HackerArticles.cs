@@ -9,32 +9,32 @@ using HackerNewsProd.Models;
 using System.Linq;
 using HackerNewsProd.Services;
 
-namespace HackerNewsTest.Services
+namespace HackerNewsProd.Services
 {
     public class HackerArticles : IHackerArticles
     {
-        private const string baseUrl = "https://hacker-news.firebaseio.com/v0/";
-        private readonly IMemoryCache _MemoryCache;
-        private static HttpClient _Client = new HttpClient();
+        private readonly string baseUrl = "https://hacker-news.firebaseio.com/v0/";
+        private readonly IMemoryCache _cacheArticles;
+        private static readonly HttpClient _httpClient = new HttpClient();
 
-        public HackerArticles(IMemoryCache memoryCache)
+        public HackerArticles(IMemoryCache articleCache)
         {
-            _MemoryCache = memoryCache;
+            _cacheArticles = articleCache;
         }
 
-        public async Task<List<HackerModel>> GetNewsArticles()
+        public async Task<List<HackerModel>> GetNewNewsArticles()
         {
-            List<HackerModel> newsArticlesList = new List<HackerModel>();
+            List<HackerModel> newNewsArticlesList = new List<HackerModel>();
 
             try
             {
-                var reponseNewStories = await _Client.GetAsync(baseUrl + "newstories.json?print=pretty");
+                var reponseNewStories = await _httpClient.GetAsync(baseUrl + "newstories.json?print=pretty");
 
                 if (reponseNewStories.StatusCode == HttpStatusCode.OK)
                 {
                     var responseContent = reponseNewStories.Content.ReadAsStringAsync().Result;
 
-                    newsArticlesList = await ConvertResponseToJSON(newsArticlesList, responseContent);
+                    newNewsArticlesList = await ConvertResponseToJSON(newNewsArticlesList, responseContent);
                 }
                 else
                 {
@@ -46,7 +46,7 @@ namespace HackerNewsTest.Services
                 Console.Write(ex.Message);
             }
 
-            return newsArticlesList;
+            return newNewsArticlesList;
 
         }
 
@@ -70,7 +70,7 @@ namespace HackerNewsTest.Services
 
         private async Task<HackerModel> GetNewsArticlesByID(int id)
         {
-            return await _MemoryCache.GetOrCreateAsync(id, async cacheArticles =>
+            return await _cacheArticles.GetOrCreateAsync(id, async cacheArticles =>
             {
                 HackerModel newsArticlesByID = new HackerModel();
 
@@ -81,7 +81,7 @@ namespace HackerNewsTest.Services
 
                 try
                 {
-                    var responseNewsArticlesByID = await _Client.GetAsync(string.Format(baseUrl + "item/{0}.json?print=pretty", id));
+                    var responseNewsArticlesByID = await _httpClient.GetAsync(string.Format(baseUrl + "item/{0}.json?print=pretty", id));
 
                     if (responseNewsArticlesByID.StatusCode == HttpStatusCode.OK)
                     {

@@ -22,7 +22,7 @@
     "@angular/platform-server": "~8.2.14",
     "@angular/router": "~8.2.14",
     "@nguniversal/module-map-ngfactory-loader": "~8.2.6",
-    "bootstrap": "^4.6.1",
+    "bootstrap": "^4.6.2",
     "core-js": "^3.20.2",
     "jquery": "^3.6.0",
     "ng2-search-filter": "^0.5.1",
