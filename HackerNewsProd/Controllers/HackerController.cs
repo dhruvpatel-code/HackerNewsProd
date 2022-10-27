@@ -28,6 +28,8 @@ namespace HackerNewsProd.Controllers
         {
             // Holds items from the API in a list to be held from the HackerModel
             List<HackerModel> newNewsArticleList = new List<HackerModel>();
+            var settings = new JsonSerializerSettings();
+            settings.NullValueHandling = NullValueHandling.Ignore;
 
             try
             {
@@ -43,7 +45,7 @@ namespace HackerNewsProd.Controllers
                 Console.Write(ex.Message);
             }
             // Gets list of new news articles
-            return Ok(newNewsArticleList);
+            return Json(newNewsArticleList, settings);
         }
     }
 }
