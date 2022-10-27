@@ -11,8 +11,10 @@ and display it on the front end. The frontend lets you filter through the articl
 
 ### Dependencies
 
-Windows, Linux or Mac
-.Net 5 runtime and SDK
+Windows, Linux, or Mac
+
+.Net 5 runtime, and SDK
+
 Node Version 14+
 
 ### Installing
