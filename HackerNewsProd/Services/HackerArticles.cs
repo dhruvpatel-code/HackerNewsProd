@@ -54,7 +54,7 @@ namespace HackerNewsProd.Services
         {
             try
             {
-                var newsArticlesJSONConverted = JsonConvert.DeserializeObject<List<int>>(responseContent);
+                var newsArticlesJSONConverted = JsonConvert.DeserializeObject<List<int>>(responseContent, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
 
                 var newsArticles = newsArticlesJSONConverted.Select(GetNewsArticlesByID);
 
