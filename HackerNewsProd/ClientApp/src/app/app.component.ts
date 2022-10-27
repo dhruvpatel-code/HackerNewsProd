@@ -15,7 +15,9 @@ export class AppComponent implements OnInit {
   count: number = 0;
   tableSize: number = 10;
   tableSizes: any = [3, 6, 9, 12];
-  searchText: any
+  searchText: any;
+  isLoading: boolean;
+  
   constructor(private articleService: HackerService) { };
 
   ngOnInit() {
@@ -25,6 +27,7 @@ export class AppComponent implements OnInit {
   getArticles() {
     this.articleService.getArticle().subscribe(result => {
       this.articleList = result;
+      this.isLoading = false;
     })
   }
 
