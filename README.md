@@ -11,20 +11,19 @@ and display it on the front end.
 
 ### Dependencies
 
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
+Windows, Linux or Mac
+.Net 5 runtime and SDK
+Node Version 14+
 
 ### Installing
-
-* How/where to download your program
-* Any modifications needed to be made to files/folders
+You can easily close the repository or download the files as a zip. I would recommend build the solution on Visual Studio for a smooth expierence.
 
 ### Executing program
 
-* How to run the program
-* Step-by-step bullets
+* Visual Studio: Easily open and build the solution, build it and then click the play icon to launch with IIS.
+* Unit test for backend can be done In visual studio and Angular tests done using VScode by opening the ClientApp folder and in the terminal writing 
 ```
-code blocks for commands
+ng test
 ```
 
 ## Help
@@ -34,30 +33,4 @@ Any advise for common problems or issues.
 command to run if program contains helper info
 ```
 
-## Authors
 
-Contributors names and contact info
-
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
-
-## Version History
-
-* 0.2
-    * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
-* 0.1
-    * Initial Release
-
-## License
-
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
-
-## Acknowledgments
-
-Inspiration, code snippets, etc.
-* [awesome-readme](https://github.com/matiassingers/awesome-readme)
-* [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
-* [dbader](https://github.com/dbader/readme-template)
-* [zenorocha](https://gist.github.com/zenorocha/4526327)
-* [fvcproductions](https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46)
