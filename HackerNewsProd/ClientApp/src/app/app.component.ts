@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   articleList: Articles[] = new Array<Articles>();
   page: number = 1;
   count: number = 0;
-  tableSize: number = 20;
+  tableSize: number = 10;
   tableSizes: any = [3, 6, 9, 12];
   searchText: any
   constructor(private articleService: HackerService) { };
